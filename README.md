@@ -1,8 +1,8 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/rXX1_Uiw)
 ## Project 00
 ### NeXTCS
-### Period: 
-## Name0: YOUR NAME HERE
+### Period: 09
+## Name0: Eungman Joo
 ## Name1: OTHER NAME HERE (delete this line if you are working solo)
 ---
 
@@ -26,28 +26,35 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: NAME OF YOUR FORCE
+#### Custom Force: Electro-Magnetic Forces(2 components: Electric and Magnetic)
 
 ### Forumla
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
-YOUR ANSWER HERE
+F<sub>e</sub> = $\frac{k<sub>e</sub>q<sub>A</sub>q<sub>B</sub>}{r<sup>2</sup>}$ABhat
+
+F<sub>B</sub> = ((q<sub>A</sub>v<sub>A</sub>B<sub>B</sub>)sin θ)ABhat
 
 ### Custom Force
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
-  - YOUR ANSWER HERE
+  - The distance between orbs and the velocity of each orb
 
 - Does this force require any new constants, if so what are they and what values will you try initially?
-  - YOUR ANSWER HERE
+  - The electrostatic constant(I will try to use 1 and figure it out from there)
+  - The absolute value of the charge of an electron(I will try to use 0.1 and figure it out from there)
+  - The permittivity of magnetic flux in free space(I will try to use 0.01 and figure it out from there)
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
-  - YOUR ANSWER HERE
+  - Charges of each orb(boolean)
+  - If each orb is divided into electrons and protons, then they will exert both electrostatic and magnetic forces since they are moving charges
+  - Initially, I will try with only single electrons to keep it simple
+  - If I make a more complex model, charges will be ints that include negative and positive signs, and charges will also depend on size and mass
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
-  - YOUR ANSWER HERE
+  - It is an Orb-Orb interactive force
 
 - In order to calculate this force, do you need to perform extra intermediary calculations? If so, what?
-  - YOUR ANSWER HERE
+  - Yes, the magnetic field strength created by moving charges
 
 --- 
 
