@@ -33,7 +33,7 @@ What is the formula for your force? Including descriptions/definitions for the s
 
 $F_e = \frac {k_e q_A q_B}{r^2} \hat {AB}$
 
-F<sub>B</sub> = ((q<sub>A</sub>v<sub>A</sub>B<sub>B</sub>)sin θ)ABhat
+$F_B = ((q_A v_A B_B)sin θ) \hat {AB}$
 
 ### Custom Force
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
