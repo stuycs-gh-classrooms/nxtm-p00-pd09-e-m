@@ -31,7 +31,7 @@ All projects will require the following:
 ### Forumla
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 
-F<sub>e</sub> = $\frac{k<sub>e</sub>q<sub>A</sub>q<sub>B</sub>}{r<sup>2</sup>}$ABhat
+$F_e = \frac {k_e q_A q_B}{r^2} \hat {AB}$
 
 F<sub>B</sub> = ((q<sub>A</sub>v<sub>A</sub>B<sub>B</sub>)sin θ)ABhat
 
