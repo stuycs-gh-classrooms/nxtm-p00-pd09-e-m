@@ -61,12 +61,14 @@ $F_B = ((q_A v_A B_B)sin θ) \hat {AB}$
 ### Simulation 1: Gravity
 Describe how you will attempt to simulate orbital motion.
 
+A top-down view of a fixed massive central planet with multiple moons
+
 --- 
 
 ### Simulation 2: Spring
 Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+
 
 --- 
 
