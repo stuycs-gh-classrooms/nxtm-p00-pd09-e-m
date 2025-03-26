@@ -3,7 +3,7 @@
 ### NeXTCS
 ### Period: 09
 ## Name0: Eungman Joo
-## Name1: OTHER NAME HERE (delete this line if you are working solo)
+## Name1: Jason 
 ---
 
 This project will be completed in phases. The first phase will be to work on this document. Use github-flavoured markdown. (For more markdown help [click here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) or [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) )
@@ -33,7 +33,9 @@ What is the formula for your force? Including descriptions/definitions for the s
 
 $F_e = \frac {k_e q_A q_B}{r^2} \hat {AB}$
 
-$F_B = ((q_A v_A B_B)sin θ) \hat {AB}$
+$F_B = ((q_B v_B B_A)sin θ) \hat {AB}$
+
+combined: $F_L = q_B ((\frac {k_e q_A}{r^2})+(v_B)(B_A sin θ)) \hat {AB}$
 
 ### Custom Force
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
