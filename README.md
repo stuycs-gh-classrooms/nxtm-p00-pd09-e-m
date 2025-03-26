@@ -70,22 +70,24 @@ A top-down view of a fixed massive central planet with multiple orbiting moons
 ### Simulation 2: Spring
 Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-
+1 fixed orb at the center-left region with linked list of orb nodes attached 
 
 --- 
 
 ### Simulation 3: Drag
 Describe what your drag simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+Randomized regions of variable drag coefficients in the shapes of circles around the simulation interface
 
 --- 
 
 ### Simulation 4: Custom force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
-
+Lorentz force will show no effect at 1 orbnode(no fixed orbs) and only electrostatic force at 2 orbnodes. 
+Then at 3 or more orbnodes in 2 dimensions, the magnetic force will also be shown interacting with the orbs.
+(First step will only be electrons, protons will be "discovered" later)
+A top-down view of a fixed massive central planet with multiple orbiting moons
 --- 
 
 ### Simulation 5: Combination
