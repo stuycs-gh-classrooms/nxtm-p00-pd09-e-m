@@ -87,11 +87,11 @@ Describe what your Custom force simulation will look like. Explain how it will b
 Lorentz force will show no effect at 1 orbnode(no fixed orbs) and only electrostatic force at 2 orbnodes. 
 Then at 3 or more orbnodes in 2 dimensions, the magnetic force will also be shown interacting with the orbs.
 (First step will only be electrons, protons will be "discovered" later)
-A top-down view of a fixed massive central planet with multiple orbiting moons
+
 --- 
 
 ### Simulation 5: Combination
 Describe what your combination simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-YOUR ANSWER HERE
+The combination simulation should include drag, gravity, and the lorentz forces. In the future, we plan to also simulate a coilgun.
 
