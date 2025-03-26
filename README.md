@@ -3,7 +3,7 @@
 ### NeXTCS
 ### Period: 09
 ## Name0: Eungman Joo
-## Name1: Jason 
+## Name1: Jason Zheng
 ---
 
 This project will be completed in phases. The first phase will be to work on this document. Use github-flavoured markdown. (For more markdown help [click here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) or [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) )
@@ -63,7 +63,7 @@ combined: $F_L = q_B ((\frac {k_e q_A}{r^2})+(v_B)(B_A sin θ)) \hat {AB}$
 ### Simulation 1: Gravity
 Describe how you will attempt to simulate orbital motion.
 
-A top-down view of a fixed massive central planet with multiple moons
+A top-down view of a fixed massive central planet with multiple orbiting moons
 
 --- 
 
