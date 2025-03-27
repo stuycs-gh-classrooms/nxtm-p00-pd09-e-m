@@ -54,6 +54,10 @@ combined: $F_L = q_B ((\frac {k_e q_A}{r^2})+(v_B)(\frac{\textmu_0 q_A v_A}{4\pi
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
   - It is an Orb-Orb interactive force
+      - At only 1 orb, nothing happens because there are no external electric or magnetic fields
+      - At 2 orbs, there is either attraction or repulsion where electric fields of both orbs interact
+      - At 3 or more nonlinearly positioned orbs, there is both attraction/repulsion from $F_e$ and additional centripetal motion from $F_B$ (magnetic force)
+  - Orbs will not interact in 3 dimensions
 
 - In order to calculate this force, do you need to perform extra intermediary calculations? If so, what?
   - Yes, the magnetic field strength created by moving charges
