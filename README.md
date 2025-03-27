@@ -47,10 +47,10 @@ combined: $F_L = q_B ((\frac {k_e q_A}{r^2})+(v_B)(\frac{\textmu_0 q_A v_A}{4\pi
   - The permittivity of free space $\textmu_0 = 4\pi*10^{-7} \frac{Tm}{A}$ (While coding, I will try to substitute with 0.01 and figure it out from there)
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
-  - Charges of each orb(boolean)
+  - Charges of each orb
+    - If I make a more complex model, charges will be floats (composed of ints multiplied by elementary charge)
   - If each orb is divided into electrons and protons, then they will exert both electrostatic and magnetic forces since they are moving charges
   - Initially, I will try with only single electrons to keep it simple
-  - If I make a more complex model, charges will be ints that include negative and positive signs, and charges will also depend on size and mass
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
   - It is an Orb-Orb interactive force
