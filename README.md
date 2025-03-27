@@ -88,6 +88,7 @@ Randomized regions of variable drag coefficients in the shapes of circles around
 ### Simulation 4: Custom force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
+User will add orb nodes to linkedlist at random positions
 Lorentz force will show no effect at 1 orbnode(no fixed orbs) and only electrostatic force at 2 orbnodes. 
 Then at 3 or more orbnodes in 2 dimensions, the magnetic force will also be shown interacting with the orbs.
 (First step will only be electrons, protons will be "discovered" later)
@@ -97,5 +98,6 @@ Then at 3 or more orbnodes in 2 dimensions, the magnetic force will also be show
 ### Simulation 5: Combination
 Describe what your combination simulation will look like. Explain how it will be setup, and how it should behave while running.
 
-The combination simulation should include drag, gravity, and the lorentz forces. In the future, we plan to also simulate a coilgun.
+The combination simulation should include drag, gravity, and the lorentz forces. User should also be able to manually add orbs to linkedlist
+In the future, we plan to also simulate a coilgun.
 
