@@ -26,7 +26,7 @@ All projects will require the following:
 ## Phase 0: Force Selection, Analysis & Plan
 ---------- 
 
-#### Custom Force: Electro-Magnetic Forces(2 components: Electric and Magnetic)
+#### Custom Force: Lorentz Force (Electrodynamic and Magnetic Forces combined)
 
 ### Forumla
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
@@ -35,16 +35,16 @@ $F_e = \frac {k_e q_A q_B}{r^2} \hat {AB}$
 
 $F_B = ((q_B v_B B_A)sin θ) \hat {AB}$
 
-combined: $F_L = q_B ((\frac {k_e q_A}{r^2})+(v_B)(B_A sin θ)) \hat {AB}$
+combined: $F_L = q_B ((\frac {k_e q_A}{r^2})+(v_B)(\frac{\textmu_0 q_A v_A}{4\pi r^2})sin \theta) \hat {AB}$
 
 ### Custom Force
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
   - The distance between orbs and the velocity of each orb
 
 - Does this force require any new constants, if so what are they and what values will you try initially?
-  - The electrostatic constant(I will try to use 1 and figure it out from there)
-  - The absolute value of the charge of an electron(I will try to use 0.1 and figure it out from there)
-  - The permittivity of magnetic flux in free space(I will try to use 0.01 and figure it out from there)
+  - The electrostatic constant $k_e = 8.99*10^{9} \frac{Nm^2}{C^2}$ (While coding, I will try to substitute with 1 and figure it out from there)
+  - The elementary charge *e* = $1.6*10^{-19} C$ (While coding, I will try to substitute with 0.1 and figure it out from there)
+  - The permittivity of free space $\textmu_0 = 4\pi*10^{-7} \frac{Tm}{A}$ (While coding, I will try to substitute with 0.01 and figure it out from there)
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
   - Charges of each orb(boolean)
