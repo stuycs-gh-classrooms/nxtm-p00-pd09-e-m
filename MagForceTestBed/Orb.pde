@@ -89,11 +89,19 @@ class Orb {
   PVector getMagnetic(Orb other, float permittivity) {
     return other.center.mult(permittivity);
   }//getMagnetic
-  
-  boolean bPositive(Orb other) {
-    if (other.charge>0){
-      
-    }//if other is positive
+
+  boolean bIntoScreen(Orb other) {
+    if (other.charge<0) {
+      if (other.velocity.x != 0) {
+        float slope = other.velocity.y/other.velocity.x;
+        if (this.center.y-other.center.y - slope*(this.center.x-other.center.x) < 0) {
+          return true;
+        }//if into the screen
+        else {
+          return false;
+        }//if out of the screen
+      }//if not vertical slope
+    }//if other is negative
   }//bSign discriminant
 
   boolean yBounce() {
