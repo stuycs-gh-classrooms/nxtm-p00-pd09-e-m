@@ -76,17 +76,17 @@ class Orb {
 
   //spring force between calling orb and other
   PVector getSpring(Orb other, int springLength, float springK) {
-    if(other != null) {
+    if (other != null) {
       PVector direction = PVector.sub(other.center, this.center);
       direction.normalize();
-  
+
       float displacement = this.center.dist(other.center) - springLength;
       float mag = springK * displacement;
       direction.mult(mag);
-  
+
       return direction;
     } else {
-      PVector direction = new PVector(0,0);
+      PVector direction = new PVector(0, 0);
       return direction;
     }
   }//getSpring
@@ -96,11 +96,35 @@ class Orb {
   //  return other.center.mult(permittivity);
   //}//getMagnetic
   
+  PVector getMagnetic(float field) {
+    PVector direction = velocity.copy();
+    direction = direction.normalize();
+    if(charge>0){
+      direction.x = direction.y;
+      direction.y = -direction.x;
+    }
+    if(charge<0){
+      direction.x = -direction.y;
+      direction.y = direction.x;
+    }
+    float magnitude = charge*field*velocity.mag();
+    return direction.mult(magnitude);
+  }//getMagnetic
+
   //boolean bPositive(Orb other) {
   //  if (other.charge>0){
-      
+
   //  }//if other is positive
   //}//bSign discriminant
+
+  boolean isField(float field) {
+    if (field != 0) {
+      return true;
+    }//if field exists
+    else {
+      return false;
+    }//if no B field
+  }//fieldType
 
   boolean yBounce() {
     if (center.y > height - bsize/2) {
