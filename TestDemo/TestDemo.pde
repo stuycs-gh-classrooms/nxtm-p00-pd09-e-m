@@ -76,11 +76,10 @@ void keyPressed() {
     
   //}
   if (key == '1') {
-    for (int i = 0; i < Orbs.length-1; i++) {
+    for (int i = 0; i < Orbs.length; i++) {
       int random = int(random(5, 30));
-      Orbs[i+1] = new Orb(100+1000*i/(Orbs.length-1), 50, random, random);
+      Orbs[i] = new Orb(100+1000*i/(Orbs.length), 50, random, random);
     }
-    Orbs[0].c = color(0,100,255);
   }
   if (key == '2') {
     
