@@ -1,11 +1,11 @@
-//Magnetic force test bed
+//TestDemo
 
 /* ===================================
  Keyboard commands:
- =: add a new node to the front of the list
- -: remove the node at the front
  SPACE: Toggle moving on/off
- g: Toggle earth gravity on/off
+ 1: Toggle Gravity demo
+ 2: Toggle Drag demo
+ 3: Toggle Mag demo
  
  Mouse Commands:
  =================================== */
@@ -17,6 +17,7 @@ float MIN_MASS = 10;
 float MAX_MASS = 100;
 float G_CONSTANT = 1;
 float D_COEF = 0.1;
+float B_FIELD = 1;
 PVector UGRAVITY = new PVector(0, 0.5);
 //double MU0 = 4*Math.PI*0.0000001;
 float MU0_DIV_4PI = 0.01;
@@ -32,10 +33,15 @@ int MAGNET = 4;
 int UGRAV = 5;
 int SPRING = 6;
 int DRAGREG = 7;
-boolean[] toggles = new boolean[8];
+int DEMO1 = 8;
+int DEMO2 = 9;
+int DEMO3 = 10;
+boolean[] toggles = new boolean[11];
 String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Magnetic", "Ugravity", "Spring"};
+String[] demos = {"Gravity", "Drag", "Spring"};
 Orb[] Orbs = new Orb[NUM_ORBS];
 OrbNode[] OrbNodes = new OrbNode[NUM_ORBS];
+Orb particle;
 
 FixedOrb earth;
 
@@ -107,6 +113,10 @@ void draw() {
         }
       }
     }
+    //if (toggles[DEMO3] && particle != null){
+    //  particle.display();
+    //  particle.applyForce(getMagnetic(B_FIELD));
+    //}//if magdemo
   }//moving
   if (Orbs != null) {
     for (int i = 0; i < Orbs.length; i++) {
@@ -151,6 +161,9 @@ void keyPressed() {
 
   //}
   if (key == '1') {
+    toggles[DEMO1] = true;
+    toggles[DEMO2] = false;
+    toggles[DEMO3] = false;
     Orbs = new Orb[NUM_ORBS+1];
     OrbNodes = null;
     for (int i = 0; i < Orbs.length - 1; i++) {
@@ -164,10 +177,13 @@ void keyPressed() {
     toggles[BOUNCE] = true;
     toggles[MAGNET] = false;
     toggles[UGRAV] = false;
-    toggles[SPRING] = true;
+    toggles[SPRING] = false;
     toggles[DRAGREG] = false;
   }
   if (key == '2') {
+    toggles[DEMO2] = true;
+    toggles[DEMO1] = false;
+    toggles[DEMO3] = false;
     Orbs = new Orb[NUM_ORBS];
     OrbNodes = null;
     for (int i = 0; i < Orbs.length; i++) {
@@ -184,7 +200,15 @@ void keyPressed() {
     toggles[DRAGREG] = true;
   }
   if (key == '3') {
-    Orbs = null;
+    toggles[DEMO3] = true;
+    toggles[DEMO1] = false;
+    toggles[DEMO2] = false;
+    //Orbs = null;
+    //OrbNodes = null;
+    
+    //particle = new Orb();
+    
+     Orbs = null;
     OrbNodes = new OrbNode[NUM_ORBS+1];
     for (int i = 0; i < OrbNodes.length - 1; i++) {
       OrbNodes[i] = new OrbNode();
@@ -225,5 +249,21 @@ void displayMode() {
     fill(0);
     text(modes[m], x+2, 2);
     x += w+5;
+  }
+  
+  int d = 0;
+  for (int m=0; m<demos.length; m++) {
+    //set box color
+    if (toggles[m+8]) {
+      fill(0, 255, 0);
+    } else {
+      fill(255, 0, 0);
+    }
+
+    float w = textWidth(demos[m]);
+    rect(d, 20, w+5, 40);
+    fill(0);
+    text(demos[m], d+2, 22);
+    d += w+5;
   }
 }//display
