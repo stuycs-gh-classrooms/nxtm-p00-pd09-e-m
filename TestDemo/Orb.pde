@@ -76,15 +76,21 @@ class Orb {
 
   //spring force between calling orb and other
   PVector getSpring(Orb other, int springLength, float springK) {
-    PVector direction = PVector.sub(other.center, this.center);
-    direction.normalize();
-
-    float displacement = this.center.dist(other.center) - springLength;
-    float mag = springK * displacement;
-    direction.mult(mag);
-
-    return direction;
+    if(other != null) {
+      PVector direction = PVector.sub(other.center, this.center);
+      direction.normalize();
+  
+      float displacement = this.center.dist(other.center) - springLength;
+      float mag = springK * displacement;
+      direction.mult(mag);
+  
+      return direction;
+    } else {
+      PVector direction = new PVector(0,0);
+      return direction;
+    }
   }//getSpring
+
 
   //PVector getMagnetic(Orb other, float permittivity) {
   //  return other.center.mult(permittivity);
