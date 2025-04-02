@@ -1,7 +1,7 @@
-//Magnetic force test bed
+//TestDemo
 
 /* ===================================
- Keyboard commands:
+ Keyboard commands(IGNORE FOR NOW):
  =: add a new node to the front of the list
  -: remove the node at the front
  SPACE: Toggle moving on/off
@@ -151,12 +151,10 @@ void keyPressed() {
 
   //}
   if (key == '1') {
-<<<<<<< HEAD
     for (int i = 0; i < Orbs.length; i++) {
       int random = int(random(5, 30));
       Orbs[i] = new Orb(100+1000*i/(Orbs.length), 50, random, random);
     }
-=======
     Orbs = new Orb[NUM_ORBS+1];
     OrbNodes = null;
     for (int i = 0; i < Orbs.length - 1; i++) {
@@ -172,7 +170,6 @@ void keyPressed() {
     toggles[UGRAV] = false;
     toggles[SPRING] = true;
     toggles[DRAGREG] = false;
->>>>>>> d19548266c4f30009983ea8cfacb188a6909f243
   }
   if (key == '2') {
     Orbs = new Orb[NUM_ORBS];
