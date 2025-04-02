@@ -1,13 +1,11 @@
 //TestDemo
 
 /* ===================================
-<<<<<<< HEAD
  Keyboard commands(IGNORE FOR NOW):
  =: add a new node to the front of the list
  -: remove the node at the front
 =======
  Keyboard commands:
->>>>>>> dbca68da8effc87a58c39fd8ec24f9f94f99ac30
  SPACE: Toggle moving on/off
  1: Toggle Gravity demo
  2: Toggle Drag demo
@@ -167,16 +165,9 @@ void keyPressed() {
 
   //}
   if (key == '1') {
-<<<<<<< HEAD
-    for (int i = 0; i < Orbs.length; i++) {
-      int random = int(random(5, 30));
-      Orbs[i] = new Orb(100+1000*i/(Orbs.length), 50, random, random);
-    }
-=======
     toggles[DEMO1] = true;
     toggles[DEMO2] = false;
     toggles[DEMO3] = false;
->>>>>>> dbca68da8effc87a58c39fd8ec24f9f94f99ac30
     Orbs = new Orb[NUM_ORBS+1];
     OrbNodes = null;
     for (int i = 0; i < Orbs.length - 1; i++) {
@@ -221,7 +212,8 @@ void keyPressed() {
     
     //particle = new Orb();
     
-     Orbs = null;
+    Orbs = null;
+    OrbNodes = null;
     OrbNodes = new OrbNode[NUM_ORBS+1];
     for (int i = 0; i < OrbNodes.length - 1; i++) {
       OrbNodes[i] = new OrbNode();
