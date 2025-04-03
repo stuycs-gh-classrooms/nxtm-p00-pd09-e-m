@@ -15,15 +15,15 @@ class Orb {
     float x = random(bsize/2, width-bsize/2);
     float y = random(bsize/2, height-bsize/2);
     center = new PVector(x, y);
-    mass = random(10, 100);
-    //int q = int(random(2));
-    //if (q == 0) {
-    //  charge = -0.1;
-    //}
-    //else {
-    //  charge = 0.1;
-    //}
-    charge = -0.5;
+    mass = bsize;
+    int q = int(random(2));
+    if (q == 0) {
+      charge = -0.1;
+    }
+    else {
+      charge = 0.1;
+    }
+    //charge = -0.5;
     velocity = new PVector();
     acceleration = new PVector();
     setColor();
@@ -99,11 +99,12 @@ class Orb {
   //}//getMagnetic
 
   PVector getMagnetic(float field) {
-    PVector direction;
+    PVector direction = new PVector();
 
     direction.x = -this.velocity.y;
     direction.y = this.velocity.x;
     direction = direction.normalize();
+    println(velocity.mag());
     float magnitude = charge*field*velocity.mag();
     direction.mult(magnitude);
     //println(magnitude);

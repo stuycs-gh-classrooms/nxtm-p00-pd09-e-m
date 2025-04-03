@@ -281,8 +281,8 @@ void keyPressed() {
     OrbNodes = null;
 
     particle = new Orb();
-    particle.velocity.x = random(-5,5);
-    particle.velocity.y = random(-5,5);
+    particle.velocity.x = 1;
+    particle.velocity.y = 1;
 
     toggles[MOVING] = false;
     toggles[BOUNCE] = false;
