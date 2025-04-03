@@ -99,13 +99,13 @@ class Orb {
   //}//getMagnetic
 
   PVector getMagnetic(float field) {
-    PVector direction = velocity.copy();
+    PVector direction;
 
-    direction.x = -direction.y;
-    direction.y = direction.x;
+    direction.x = -this.velocity.y;
+    direction.y = this.velocity.x;
     direction = direction.normalize();
-    //float magnitude = charge*field*velocity.mag();
-    //direction.mult(magnitude);
+    float magnitude = charge*field*velocity.mag();
+    direction.mult(magnitude);
     //println(magnitude);
     return direction;
   }//getMagnetic
