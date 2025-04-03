@@ -8,8 +8,8 @@ class Orb {
   float mass;
   float charge;
   color c;
-
-
+  boolean chargeSign;
+  
   Orb() {
     bsize = random(10, MAX_SIZE);
     float x = random(bsize/2, width-bsize/2);
@@ -73,6 +73,24 @@ class Orb {
     PVector force = other.center.copy();
     force.sub(center);
     force.mult(strength);
+    return force;
+  }
+  
+  PVector getElectric(Orb other, float K) {
+    float strength = K * charge*other.charge;
+    //dont want to divide by 0!
+    float r = max(center.dist(other.center), MIN_SIZE);
+    strength = strength/ pow(r, 2);
+    PVector force = other.center.copy();
+    force.sub(center);
+    force.mult(strength);
+    if(charge < 0 && other.charge < 0){
+      force.x = -force.x;
+      force.y = -force.y;
+    } else if(charge > 0 && other.charge > 0){
+      force.x = -force.x;
+      force.y = -force.y;
+    }
     return force;
   }
 
