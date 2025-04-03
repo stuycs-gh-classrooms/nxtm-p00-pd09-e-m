@@ -16,12 +16,14 @@ class Orb {
     float y = random(bsize/2, height-bsize/2);
     center = new PVector(x, y);
     mass = random(10, 100);
-    int q = int(random(2));
-    if (q == 0) {
-      charge = -0.1;
-    } else {
-      charge = 0.1;
-    }
+    //int q = int(random(2));
+    //if (q == 0) {
+    //  charge = -0.1;
+    //}
+    //else {
+    //  charge = 0.1;
+    //}
+    charge = -0.5;
     velocity = new PVector();
     acceleration = new PVector();
     setColor();
@@ -95,20 +97,17 @@ class Orb {
   //PVector getMagnetic(Orb other, float permittivity) {
   //  return other.center.mult(permittivity);
   //}//getMagnetic
-  
+
   PVector getMagnetic(float field) {
     PVector direction = velocity.copy();
+
+    direction.x = -direction.y;
+    direction.y = direction.x;
     direction = direction.normalize();
-    if(charge>0){
-      direction.x = direction.y;
-      direction.y = -direction.x;
-    }
-    if(charge<0){
-      direction.x = -direction.y;
-      direction.y = direction.x;
-    }
-    float magnitude = charge*field*velocity.mag();
-    return direction.mult(magnitude);
+    //float magnitude = charge*field*velocity.mag();
+    //direction.mult(magnitude);
+    //println(magnitude);
+    return direction;
   }//getMagnetic
 
   //boolean bPositive(Orb other) {
@@ -117,8 +116,8 @@ class Orb {
   //  }//if other is positive
   //}//bSign discriminant
 
-  boolean isField(float field) {
-    if (field != 0) {
+  boolean isField(PVector velocity) {
+    if (velocity.mag() > 0) {
       return true;
     }//if field exists
     else {

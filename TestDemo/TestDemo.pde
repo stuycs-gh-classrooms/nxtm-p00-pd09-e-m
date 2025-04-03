@@ -4,7 +4,7 @@
  Keyboard commands(IGNORE FOR NOW):
  =: add a new node to the front of the list
  -: remove the node at the front
-=======
+ =======
  Keyboard commands:
  SPACE: Toggle moving on/off
  1: Toggle Gravity demo
@@ -21,7 +21,7 @@ float MIN_MASS = 10;
 float MAX_MASS = 100;
 float G_CONSTANT = 1;
 float D_COEF = 0.1;
-float B_FIELD = 1;
+float B_FIELD = 5;
 PVector UGRAVITY = new PVector(0, 0.5);
 //double MU0 = 4*Math.PI*0.0000001;
 float MU0_DIV_4PI = 0.01;
@@ -40,9 +40,10 @@ int DRAGREG = 7;
 int DEMO1 = 8;
 int DEMO2 = 9;
 int DEMO3 = 10;
-boolean[] toggles = new boolean[11];
+int DEMO4 = 11;
+boolean[] toggles = new boolean[12];
 String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Magnetic", "Ugravity", "Spring"};
-String[] demos = {"Gravity", "Drag", "Spring"};
+String[] demos = {"Gravity", "Drag", "Spring", "Magnetic"};
 Orb[] Orbs = new Orb[NUM_ORBS];
 OrbNode[] OrbNodes = new OrbNode[NUM_ORBS];
 Orb particle;
@@ -52,6 +53,25 @@ FixedOrb earth;
 void setup() {
   size(600, 600);
   earth = new FixedOrb(width/2, height/2, 100, 100);
+  toggles[DEMO1] = true;
+  toggles[DEMO2] = false;
+  toggles[DEMO3] = false;
+  toggles[DEMO4] = false;
+  Orbs = new Orb[NUM_ORBS+1];
+  OrbNodes = null;
+  for (int i = 0; i < Orbs.length - 1; i++) {
+    int random = int(random(5, 30));
+    Orbs[i+1] = new Orb(100+(width-200)*i/(NUM_ORBS), 50, random, random);
+  }
+  Orbs[0] = earth;
+  toggles[MOVING] = false;
+  toggles[GRAVITY] = true;
+  toggles[DRAGF] = false;
+  toggles[BOUNCE] = true;
+  toggles[MAGNET] = false;
+  toggles[UGRAV] = false;
+  toggles[SPRING] = false;
+  toggles[DRAGREG] = false;
 }//setup
 
 void draw() {
@@ -68,6 +88,9 @@ void draw() {
           Orbs[i].applyForce(UGRAVITY);
         }
         if (toggles[DRAGF]) {
+          Orbs[i].applyForce(Orbs[i].getDragForce(D_COEF));
+        }
+        if (toggles[DEMO2]) {
           if (Orbs[i].center.y > height/2 && Orbs[i].center.y < height*3/4) {
             Orbs[i].applyForce(Orbs[i].getDragForce(D_COEF));
           }
@@ -85,6 +108,7 @@ void draw() {
         Orbs[i].move(toggles[BOUNCE]);
       }
     }
+
     if (OrbNodes != null) {
       for (int i = 0; i < OrbNodes.length; i++) {
         if (OrbNodes[i] != null) {
@@ -117,11 +141,25 @@ void draw() {
         }
       }
     }
-    //if (toggles[DEMO3] && particle != null){
-    //  particle.display();
-    //  particle.applyForce(getMagnetic(B_FIELD));
-    //}//if magdemo
+    if (particle != null) {
+
+      if (toggles[UGRAV]) {
+        particle.applyForce(UGRAVITY);
+      }
+      if (toggles[DRAGF]) {
+        particle.applyForce(particle.getDragForce(D_COEF));
+      }
+      if (toggles[MAGNET]) {
+        if (particle.isField(particle.velocity)) {
+          particle.applyForce(particle.getMagnetic(B_FIELD));
+        }
+      }
+      particle.move(toggles[BOUNCE]);
+    }
   }//moving
+  if (particle != null) {
+    particle.display();
+  }
   if (Orbs != null) {
     for (int i = 0; i < Orbs.length; i++) {
       if (Orbs[i] != null) {
@@ -168,8 +206,10 @@ void keyPressed() {
     toggles[DEMO1] = true;
     toggles[DEMO2] = false;
     toggles[DEMO3] = false;
+    toggles[DEMO4] = false;
     Orbs = new Orb[NUM_ORBS+1];
     OrbNodes = null;
+    particle = null;
     for (int i = 0; i < Orbs.length - 1; i++) {
       int random = int(random(5, 30));
       Orbs[i+1] = new Orb(100+(width-200)*i/(NUM_ORBS), 50, random, random);
@@ -188,8 +228,10 @@ void keyPressed() {
     toggles[DEMO2] = true;
     toggles[DEMO1] = false;
     toggles[DEMO3] = false;
+    toggles[DEMO4] = false;
     Orbs = new Orb[NUM_ORBS];
     OrbNodes = null;
+    particle = null;
     for (int i = 0; i < Orbs.length; i++) {
       int random = int(random(5, 30));
       Orbs[i] = new Orb(100+(width-200)*i/(NUM_ORBS), 50, random, random);
@@ -207,13 +249,10 @@ void keyPressed() {
     toggles[DEMO3] = true;
     toggles[DEMO1] = false;
     toggles[DEMO2] = false;
-    //Orbs = null;
-    //OrbNodes = null;
-    
-    //particle = new Orb();
-    
+    toggles[DEMO4] = false;
     Orbs = null;
     OrbNodes = null;
+    particle = null;
     OrbNodes = new OrbNode[NUM_ORBS+1];
     for (int i = 0; i < OrbNodes.length - 1; i++) {
       OrbNodes[i] = new OrbNode();
@@ -231,6 +270,27 @@ void keyPressed() {
     toggles[UGRAV] = false;
     toggles[SPRING] = true;
     toggles[DRAGREG] = false;
+  }
+
+  if (key == '4') {
+    toggles[DEMO4] = true;
+    toggles[DEMO3] = false;
+    toggles[DEMO1] = false;
+    toggles[DEMO2] = false;
+    Orbs = null;
+    OrbNodes = null;
+
+    particle = new Orb();
+    particle.velocity.x = random(-5,5);
+    particle.velocity.y = random(-5,5);
+
+    toggles[MOVING] = false;
+    toggles[BOUNCE] = false;
+    toggles[GRAVITY] = false;
+    toggles[DRAGF] = false;
+    toggles[MAGNET] = true;
+    toggles[UGRAV] = false;
+    toggles[SPRING] = false;
   }
 }//keyPressed
 
@@ -255,7 +315,7 @@ void displayMode() {
     text(modes[m], x+2, 2);
     x += w+5;
   }
-  
+
   int d = 0;
   for (int m=0; m<demos.length; m++) {
     //set box color
