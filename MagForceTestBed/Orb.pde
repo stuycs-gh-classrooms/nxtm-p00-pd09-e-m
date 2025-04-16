@@ -30,6 +30,12 @@ class Orb {
   Orb(float x, float y, float s, float m) {
     bsize = s;
     mass = m;
+    //int q = int(random(2));
+    //if (q == 0) {
+      charge = -0.1;
+    //} else {
+    //  charge = 0.1;
+    //}
     center = new PVector(x, y);
     velocity = new PVector();
     acceleration = new PVector();
@@ -86,23 +92,51 @@ class Orb {
     return direction;
   }//getSpring
 
-  PVector getMagnetic(Orb other, float permittivity) {
-    return other.center.mult(permittivity);
+  PVector getElectric(Orb other, float K) {
+    float strength = K * charge*other.charge;
+    //dont want to divide by 0!
+    float r = max(center.dist(other.center), MIN_SIZE);
+    strength = strength/ pow(r, 2);
+    PVector force = center.copy().sub(other.center);
+    force.mult(strength);
+    return force;
+  }
+
+  PVector getMagnetic(float field) {
+    PVector direction = new PVector();
+    direction.x = -this.velocity.y;
+    direction.y = this.velocity.x;
+    direction = direction.normalize();
+    //println(velocity.mag());
+    float magnitude = charge*field*velocity.mag();
+    //println(magnitude);
+    direction.mult(magnitude);
+    return direction;
   }//getMagnetic
 
-  boolean bIntoScreen(Orb other) {
-    if (other.charge<0) {
-      if (other.velocity.x != 0) {
-        float slope = other.velocity.y/other.velocity.x;
-        if (this.center.y-other.center.y - slope*(this.center.x-other.center.x) < 0) {
-          return true;
-        }//if into the screen
-        else {
-          return false;
-        }//if out of the screen
-      }//if not vertical slope
-    }//if other is negative
-  }//bSign discriminant
+  boolean isField(PVector otherv) {
+    if (otherv.mag() > 0) {
+      return true;
+    }//if field exists
+    else {
+      return false;
+    }//if no B field
+  }//fieldType
+  
+  float getField(Orb other, float p){
+    float slope = other.velocity.y/other.velocity.x;
+    if (center.y == slope*(center.x-other.center.x)+other.center.y){
+      return 0;
+    }//if on same line
+    float r = max(center.dist(other.center), MIN_SIZE);
+    float mag = p*other.charge*other.velocity.mag()/pow(r,2);
+    if (center.y < slope*(center.x-other.center.x)+other.center.y){
+      return mag;
+    }//if above line
+    else {
+      return -mag;
+    }//if below line
+  }//getField
 
   boolean yBounce() {
     if (center.y > height - bsize/2) {

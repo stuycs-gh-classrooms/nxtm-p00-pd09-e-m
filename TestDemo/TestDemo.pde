@@ -62,6 +62,7 @@ void setup() {
   for (int i = 0; i < Orbs.length - 1; i++) {
     int random = int(random(5, 30));
     Orbs[i+1] = new Orb(100+(width-200)*i/(NUM_ORBS), 50, random, random);
+    Orbs[i+1].velocity.x = 10;
   }
   Orbs[0] = earth;
   toggles[MOVING] = false;
@@ -213,6 +214,7 @@ void keyPressed() {
     for (int i = 0; i < Orbs.length - 1; i++) {
       int random = int(random(5, 30));
       Orbs[i+1] = new Orb(100+(width-200)*i/(NUM_ORBS), 50, random, random);
+      Orbs[i+1].velocity.x = 10;
     }
     Orbs[0] = earth;
     toggles[MOVING] = false;
